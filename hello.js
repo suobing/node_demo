@@ -10,5 +10,4 @@ function bye(name) {
     console.log('bye' + ', ' + name + '!');
 }
 
-module.exports = greet;
-// module.exports = bye;
+module.exports = {greet: greet, bye: bye};
