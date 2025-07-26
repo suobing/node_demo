@@ -63,3 +63,26 @@ fs.readFileSync('hello.txt');
 ```
 
 这段代码在 Node.js 中可以正常执行，但在浏览器中会报错，因为浏览器没有 `require` 和 `fs` 模块。
+
+### require 与 import from 的区别
+
+- require 属于 CommonJS 规范，是 Node.js 默认的模块导入方式，语法为：
+  ```js
+  const mod = require('./mod');
+  ```
+  - 可动态导入，适用于大多数 Node.js 项目。
+  - 导出用 module.exports。
+
+- import from 属于 ES Module（ESM）规范，语法为：
+  ```js
+  import { func } from './mod.js';
+  ```
+  - 需在 package.json 中配置 "type": "module" 或使用 .mjs 后缀。
+  - 只能静态导入，导出用 export。
+  - 路径需带 .js 后缀。
+
+**主要区别：**
+- require 可在任意位置调用，import 只能在文件顶部声明。
+- require 支持动态导入，import 主要用于静态导入。
+- require 默认支持 Node.js，import 需额外配置。
+- 两者的导出/导入语法不同，不能混用。
